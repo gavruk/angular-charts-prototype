@@ -1,0 +1,37 @@
+<kendo-chart>
+  <kendo-chart-title text="Units sold"></kendo-chart-title>
+  <kendo-chart-legend position="bottom" orientation="horizontal">
+  </kendo-chart-legend>
+  <kendo-chart-category-axis>
+    <kendo-chart-category-axis-item
+      [categories]="months"
+      [title]="{ text: 'Months' }"
+    >
+    </kendo-chart-category-axis-item>
+  </kendo-chart-category-axis>
+  <kendo-chart-series>
+    <kendo-chart-series-item
+      *ngFor="let p of products"
+      [name]="p.name"
+      type="line"
+      [data]="p.data"
+    >
+      <kendo-chart-series-item-tooltip background="white">
+      </kendo-chart-series-item-tooltip>
+    </kendo-chart-series-item>
+  </kendo-chart-series>
+</kendo-chart>
+
+<kendo-chart title="Units sold">
+  <kendo-chart-legend position="bottom"></kendo-chart-legend>
+  <kendo-chart-series>
+    <kendo-chart-series-item
+      type="pie"
+      [data]="pieData"
+      field="value"
+      categoryField="id"
+      [labels]="{ visible: true, content: labelContent }"
+    >
+    </kendo-chart-series-item>
+  </kendo-chart-series>
+</kendo-chart>

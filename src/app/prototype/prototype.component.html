@@ -1,0 +1,286 @@
+<h1>DevExpress</h1>
+<ul>
+  <li>Cannot change animation for pie/donut to be in a circle motion</li>
+  <li>Cannot change animation for line to animate from left to right</li>
+</ul>
+<div class="container white">
+  <div class="content">
+    <div class="title">Device Power</div>
+    <div class="chart">
+      <dx-pie-chart
+        height="110"
+        [customizePoint]="customizePoint"
+        [dataSource]="pieData"
+      >
+        <dxo-animation
+          [duration]="2000"
+          [maxPointCountSupported]="100">
+        </dxo-animation>
+        <dxo-tooltip [enabled]="true" contentTemplate="content"> </dxo-tooltip>
+        <dxo-legend [visible]="false">
+        </dxo-legend>
+        <dxi-series argumentField="id" valueField="value">
+        </dxi-series>
+        <dxo-size [width]="110" [height]="110"></dxo-size>
+        <div *dxTemplate="let info of 'content'" class="tooltip-d-pie">
+          {{ info.point.data.value }} devices
+        </div>
+      </dx-pie-chart>
+    </div>
+    <div class="description">
+      2 devices with battery levels below 40%
+    </div>
+  </div>
+  <div class="content">
+    <div class="title">Firmware Updates</div>
+    <div class="chart">
+      <dx-pie-chart
+        type="doughnut"
+        height="110"
+        [customizePoint]="customizePoint"
+        [dataSource]="pieData"
+      >
+        <dxo-animation
+          easing="easeOutCubic"
+          [duration]="2000"
+          [maxPointCountSupported]="100">
+        </dxo-animation>
+        <dxo-tooltip [enabled]="true" contentTemplate="content"> </dxo-tooltip>
+        <dxo-legend [visible]="false">
+        </dxo-legend>
+        <dxi-series argumentField="id" valueField="value">
+        </dxi-series>
+        <dxo-size [width]="110" [height]="110"></dxo-size>
+
+        <div *dxTemplate="let info of 'content'" class="tooltip-d-donut">
+          {{ info.point.data.value }} devices
+        </div>
+      </dx-pie-chart>
+    </div>
+    <div class="description">
+      7 devices with outdated firmware
+    </div>
+  </div>
+  <div class="content">
+    <div class="title">Service Orders</div>
+    <div class="chart">
+      <dx-chart
+        [dataSource]="lineData"
+        height="110"
+        >
+        <dxo-legend [visible]="false">
+        </dxo-legend>
+        <dxi-series
+          valueField="value"
+          name="Value"
+        >
+        </dxi-series>
+        <dxo-common-series-settings
+          #seriesSettings
+          argumentField="id"
+          type="line"
+          color="#2ef32e"
+          [point]="{ color: '#2ef32e', size: 0 }"
+        >
+        </dxo-common-series-settings>
+        <dxo-argument-axis [visible]="false">
+          <dxo-tick [visible]="false"></dxo-tick>
+          <dxo-minor-tick [visible]="false"></dxo-minor-tick>
+        </dxo-argument-axis>
+        <dxi-value-axis [visible]="false">
+          <dxo-tick [visible]="false"></dxo-tick>
+          <dxo-minor-tick [visible]="false"></dxo-minor-tick>
+        </dxi-value-axis>
+        <dxo-common-axis-settings [grid]="{ visible: false }" [label]="{ visible: false }"></dxo-common-axis-settings>
+        <dxo-size [width]="130" [height]="110"></dxo-size>
+        <dxo-tooltip [enabled]="true" contentTemplate="content"> </dxo-tooltip>
+
+        <div *dxTemplate="let info of 'content'" class="tooltip-d-line">
+          {{ info.point.data.value }} orders
+        </div>
+      </dx-chart>
+    </div>
+    <div class="description">
+      4 service orders completed and closed
+    </div>
+  </div>
+</div>
+
+<h1>Kendo UI</h1>
+<ul>
+  <li>Seems like its possible to change hightlighed area (the diagonal line-style hover state), but looks very complicated</li>
+  <li>Cannot change animation for pie/donut to be in a circle motion</li>
+  <li>Cannot change animation duration</li>
+</ul>
+<div class="container white">
+  <div class="content">
+    <div class="title">Device Power</div>
+    <div class="chart">
+      <kendo-chart
+        [seriesColors]="seriesColors"
+        [chartArea]="chartArea"
+        [legend]="{ visible: false }"
+        >
+        <kendo-chart-series>
+          <kendo-chart-series-item
+            type="pie"
+            [margin]="0"
+            [padding]="10"
+            [startAngle]="180"
+            [data]="pieData"
+            field="value"
+            categoryField="id"
+          >
+            <kendo-chart-series-item-tooltip background="white" position="top" [padding]="20" font="14px">
+              <ng-template kendoChartSeriesTooltipTemplate let-value="value">
+                <div class="kendo-tooltip">
+                  {{ value }} devices
+                </div>
+              </ng-template>
+            </kendo-chart-series-item-tooltip>
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
+    <div class="description">
+      2 devices with battery levels below 40%
+    </div>
+  </div>
+  <div class="content">
+    <div class="title">Firmware Updates</div>
+    <div class="chart">
+      <kendo-chart
+        [seriesColors]="seriesColors"
+        [chartArea]="chartArea"
+        [legend]="{ visible: false }"
+        >
+        <kendo-chart-series>
+          <kendo-chart-series-item
+            type="donut"
+            [margin]="0"
+            [padding]="10"
+            [startAngle]="180"
+            [data]="pieData"
+            field="value"
+            categoryField="id"
+          >
+            <kendo-chart-series-item-tooltip background="white" position="top" [padding]="20" font="14px">
+              <ng-template kendoChartSeriesTooltipTemplate let-value="value">
+                <div class="kendo-tooltip">
+                  {{ value }} devices
+                </div>
+              </ng-template>
+            </kendo-chart-series-item-tooltip>
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
+    <div class="description">
+      7 devices with outdated firmware
+    </div>
+  </div>
+  <div class="content">
+    <div class="title">Service Orders</div>
+    <div class="chart">
+      <kendo-chart
+        [seriesColors]="seriesColors"
+        [chartArea]="chartArea"
+        [legend]="{ visible: false }"
+        [yAxis]="{ visible: false }"
+        [xAxis]="{ visible: false }"
+        [valueAxis]="{ visible: false }"
+      >
+        <kendo-chart-axis-defaults [majorGridLines]="{ visible : false}">
+        </kendo-chart-axis-defaults>
+        <kendo-chart-series>
+          <kendo-chart-series-item
+            type="line"
+            [margin]="0"
+            [padding]="10"
+            [markers]="{ visible: false, size: 12, background: '#a8a8a8' }"
+            [data]="lineDataArray"
+          >
+            <kendo-chart-series-item-tooltip background="white" position="top" [padding]="20" font="14px">
+              <ng-template kendoChartSeriesTooltipTemplate let-value="value">
+                <div class="kendo-tooltip">
+                  {{ value }} orders
+                </div>
+              </ng-template>
+            </kendo-chart-series-item-tooltip>
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
+    <div class="description">
+      4 service orders completed and closed
+    </div>
+  </div>
+</div>
+
+<h1>ngx-charts</h1>
+<ul>
+  <li>Seems like its possible to change hightlighed area (the diagonal line-style hover state), but looks very complicated</li>
+  <li>Cannot change animation for line to animate from left to right</li>
+  <li>Cannot change animation duration without builing a custom chart component</li>
+</ul>
+<div class="container white">
+  <div class="content">
+    <div class="title">Device Power</div>
+    <div class="chart">
+      <ngx-charts-pie-chart
+        [view]="[110, 110]"
+        [margins]="[0, 0, 0, 0]"
+        [results]="pieDataNgx"
+        [legend]="false"
+        [labels]="false"
+        [doughnut]="false"
+        [scheme]="scheme"
+        [tooltipText]="ngxTooltipTextDevices"
+        >
+      </ngx-charts-pie-chart>
+    </div>
+    <div class="description">
+      2 devices with battery levels below 40%
+    </div>
+  </div>
+  <div class="content">
+    <div class="title">Firmware Updates</div>
+    <div class="chart">
+      <ngx-charts-pie-chart
+        [view]="[110, 110]"
+        [margins]="[0, 0, 0, 0]"
+        [results]="pieDataNgx"
+        [legend]="false"
+        [labels]="false"
+        [doughnut]="true"
+        [scheme]="scheme"
+        [arcWidth]="0.5"
+        [tooltipText]="ngxTooltipTextDevices"
+        >
+      </ngx-charts-pie-chart>
+    </div>
+    <div class="description">
+      7 devices with outdated firmware
+    </div>
+  </div>
+  <div class="content">
+    <div class="title">Service Orders</div>
+    <div class="chart">
+      <ngx-charts-line-chart
+        #ngxLineChart
+        [results]="lineDataSeries"
+        [view]="[130, 110]"
+        [scheme]="scheme"
+        [legend]="false"
+        [xAxis]="false"
+        [yAxis]="false"
+        [showXAxisLabel]="false"
+        [showYAxisLabel]="false"
+      >
+      </ngx-charts-line-chart>
+    </div>
+    <div class="description">
+      4 service orders completed and closed
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<dx-chart
+  palette="violet"
+  [dataSource]="products"
+  title="Units sold"
+  (onLegendClick)="onLegendClick($event)"
+>
+  <dxi-series
+    *ngFor="let p of productTypes"
+    [valueField]="p.key"
+    [name]="p.value"
+  ></dxi-series>
+  <dxo-common-series-settings
+    #seriesSettings
+    argumentField="month"
+    type="spline"
+  >
+  </dxo-common-series-settings>
+  <dxo-margin [bottom]="20"></dxo-margin>
+  <dxo-common-axis-settings>
+    <dxo-grid [visible]="true"></dxo-grid>
+  </dxo-common-axis-settings>
+  <dxo-legend verticalAlignment="bottom" horizontalAlignment="center">
+  </dxo-legend>
+  <dxo-argument-axis [allowDecimals]="false" [axisDivisionFactor]="60">
+    <dxo-label>
+      <dxo-format type="decimal"></dxo-format>
+    </dxo-label>
+  </dxo-argument-axis>
+  <dxo-export [enabled]="true"></dxo-export>
+  <dxo-tooltip [enabled]="true"></dxo-tooltip>
+</dx-chart>
+
+<dx-pie-chart
+  id="pie"
+  title="Units sold"
+  palette="bright"
+  [dataSource]="pieData"
+  (onLegendClick)="onLegendClick($event)"
+>
+  <dxo-legend
+    orientation="horizontal"
+    itemTextPosition="right"
+    horizontalAlignment="center"
+    verticalAlignment="bottom"
+    [columnCount]="4"
+  ></dxo-legend>
+  <dxo-export [enabled]="true"></dxo-export>
+  <dxi-series argumentField="id" valueField="value">
+    <dxo-label
+      [visible]="true"
+      position="columns"
+      [customizeText]="customizeLabel"
+    >
+      <dxo-font [size]="16"></dxo-font>
+      <dxo-connector [visible]="true" [width]="0.5"></dxo-connector>
+    </dxo-label>
+  </dxi-series>
+</dx-pie-chart>

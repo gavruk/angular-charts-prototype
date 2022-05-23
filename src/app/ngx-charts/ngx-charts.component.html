@@ -1,0 +1,38 @@
+<div class="charts">
+  <div>
+    <h3>Units sold</h3>
+    <ngx-charts-line-chart
+      [results]="series"
+      [view]="view"
+      (window:resize)="onResize($event)"
+      [animations]="true"
+      [legend]="true"
+      [autoScale]="true"
+      legendTitle="Units sold"
+      [legendPosition]="LegendPosition.Below"
+      [xAxis]="true"
+      [yAxis]="true"
+      xAxisLabel="Months"
+      yAxisLabel="Count"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [curve]="curveBundle"
+    >
+    </ngx-charts-line-chart>
+  </div>
+  <div>
+    <h3>Units sold</h3>
+    <ngx-charts-pie-chart
+      [view]="view"
+      [results]="pieData"
+      [legend]="true"
+      [legendPosition]="LegendPosition.Below"
+      [labels]="true"
+      [doughnut]="false"
+      [labelFormatting]="labelFormatting"
+      [maxLabelLength]="20"
+      (select)="onSelect($event)"
+      >
+    </ngx-charts-pie-chart>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+$series-a: #484848;
+$series-b: #a8a8a8;
+
+.space {
+  padding: 100px 0;
+}
+
+.container {
+  background: #1c1c1c;
+  padding: 50px;
+  display: flex;
+
+  &.white {
+  background: #fff;
+  }
+
+  .content {
+    margin: 20px 60px;
+    max-width: 180px;
+
+    .title {
+      color: rgb(255, 255, 255);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+    .chart {
+      margin: 20px 0;
+      height: 130px;
+    }
+    .description {
+      color: rgb(124, 124, 124);
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 16px;
+    }
+  }
+}
+
+::ng-deep g.line-chart g.line-series path {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.ngx-tooltip {
+  background-color: #fff;
+}
+
+ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
+  .tooltip-caret.position-top,
+  .tooltip-caret.position-right,
+  .tooltip-caret.position-bottom,
+  .tooltip-caret.position-left {
+    border-top-color: white;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  color: #000;
+  padding: 20px;
+  font-size: 14px;
+  background-color: white;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.k-chart-tooltip-wrapper {
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
